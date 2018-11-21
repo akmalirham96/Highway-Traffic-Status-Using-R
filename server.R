@@ -12,10 +12,26 @@ library(shiny)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
-  #open
-  #Read file
+  #extract data
   
-  highway <- read.csv(file.choose(),header = T)
+  library(twitteR)
+  
+  #Enter your API key from twitter developer
+  consumer_key = "sTeN1cD9KSal3cebA8LaqzaM5"
+  consumer_secret = "YRigTlZhWf5CXzjagQ2yATJFjLXByGHzUrqbHcvAbeazOQDQhC"
+  access_token = "1039452987179978752-Rv9M0I0noLMeLkHEZ1Rh4T3diWhkD7"
+  access_secret = "2P8klG1rqiVucCyDUW6FkHgsoMNzT6yD9X4TPOKLSqhzx"
+  
+  setup_twitter_oauth(consumer_key,consumer_secret,access_token,access_token_secret)
+  
+  #Enter your account 
+  account <- "@plustrafik"
+  account
+  
+  # n = number of tweet that you want to extract
+  account.timeline <- userTimeline(account,n=100)
+  
+  highway <- account.timeline
   str(highway)
   
   #Build Corpus
@@ -200,11 +216,6 @@ shinyServer(function(input, output) {
   
   #insert data frame
   plusTrafics = data.frame(HighwayName,KM,TrafficStatus)
-  
-  #print data frame
-  print(plusTrafic)
-  
-  #close
    
   output$highwayTrafficStatus <- renderTable({
     highwayFilter <- subset(plusTrafics,plusTrafics$HighwayName == input$inTrafic)
