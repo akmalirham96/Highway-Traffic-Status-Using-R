@@ -17,10 +17,10 @@ shinyServer(function(input, output) {
   library(twitteR)
   
   #Enter your API key from twitter developer
-  consumer_key = "sTeN1cD9KSal3cebA8LaqzaM5"
-  consumer_secret = "YRigTlZhWf5CXzjagQ2yATJFjLXByGHzUrqbHcvAbeazOQDQhC"
-  access_token = "1039452987179978752-Rv9M0I0noLMeLkHEZ1Rh4T3diWhkD7"
-  access_secret = "2P8klG1rqiVucCyDUW6FkHgsoMNzT6yD9X4TPOKLSqhzx"
+  consumer_key = ""
+  consumer_secret = ""
+  access_token = ""
+  access_secret = ""
   
   setup_twitter_oauth(consumer_key,consumer_secret,access_token,access_token_secret)
   
